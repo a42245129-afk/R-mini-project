@@ -15,7 +15,7 @@ library(tidyr)
 library(readr)
 library(scales)
 
-cat("✅ Libraries loaded successfully\n")
+cat(" Libraries loaded successfully\n")
 
 
 # ── STEP 2: Download Ergast Data (CSV) ───────────────────────
@@ -32,7 +32,7 @@ load_or_simulate <- function(file, sim_fn) {
   if (file.exists(file)) {
     read_csv(file, show_col_types = FALSE)
   } else {
-    cat("⚠️  File not found:", file, "— using simulated data\n")
+    cat("  File not found:", file, "— using simulated data\n")
     sim_fn()
   }
 }
@@ -103,7 +103,7 @@ results   <- load_or_simulate("results.csv",   sim_results)
 lap_times <- load_or_simulate("lap_times.csv", sim_lap_times)
 pit_stops <- load_or_simulate("pit_stops.csv", sim_pit_stops)
 
-cat("✅ Data loaded | Rows — results:", nrow(results),
+cat(" Data loaded | Rows — results:", nrow(results),
     "| laps:", nrow(lap_times), "| pits:", nrow(pit_stops), "\n")
 
 
@@ -118,7 +118,7 @@ cat("Missing values in lap_times:", sum(is.na(lap_times)), "\n")
 results_clean <- results %>%
   filter(!is.na(points), year >= 2018, year <= 2023)
 
-cat("✅ Clean rows:", nrow(results_clean), "\n")
+cat(" Clean rows:", nrow(results_clean), "\n")
 
 
 # ── STEP 4: Driver Championship Analysis ─────────────────────
@@ -170,7 +170,7 @@ p1 <- ggplot(driver_points,
 
 print(p1)
 ggsave("plot1_driver_points.png", p1, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 1 saved: plot1_driver_points.png\n")
+cat(" Plot 1 saved: plot1_driver_points.png\n")
 
 
 # ── STEP 5: Season-by-Season Points for Top 3 Drivers ────────
@@ -214,7 +214,7 @@ p2 <- ggplot(season_pts,
 
 print(p2)
 ggsave("plot2_points_trend.png", p2, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 2 saved: plot2_points_trend.png\n")
+cat(" Plot 2 saved: plot2_points_trend.png\n")
 
 
 # ── STEP 6: Lap Time Distribution ────────────────────────────
@@ -276,7 +276,7 @@ p3 <- ggplot(lap_data,
 
 print(p3)
 ggsave("plot3_lap_times.png", p3, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 3 saved: plot3_lap_times.png\n")
+cat(" Plot 3 saved: plot3_lap_times.png\n")
 
 
 # ── STEP 7: Pit Stop Analysis ─────────────────────────────────
@@ -321,7 +321,7 @@ p4 <- ggplot(pit_summary,
 
 print(p4)
 ggsave("plot4_pit_stops.png", p4, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 4 saved: plot4_pit_stops.png\n")
+cat(" Plot 4 saved: plot4_pit_stops.png\n")
 
 
 # ── STEP 8: Constructor Championship Trend ────────────────────
@@ -369,7 +369,7 @@ p5 <- ggplot(constructor_trend,
 
 print(p5)
 ggsave("plot5_constructor_trend.png", p5, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 5 saved: plot5_constructor_trend.png\n")
+cat(" Plot 5 saved: plot5_constructor_trend.png\n")
 
 
 # ── STEP 9: Win Rate Analysis ─────────────────────────────────
@@ -414,7 +414,7 @@ p6 <- ggplot(win_rate,
 
 print(p6)
 ggsave("plot6_win_rate.png", p6, width = 9, height = 6, dpi = 150)
-cat("✅ Plot 6 saved: plot6_win_rate.png\n")
+cat(" Plot 6 saved: plot6_win_rate.png\n")
 
 
 # ── STEP 10: Correlation Analysis ────────────────────────────
@@ -436,7 +436,7 @@ cat(sprintf("Unique drivers       : %d\n", n_distinct(results_clean$driverId)))
 cat(sprintf("Unique constructors  : %d\n", n_distinct(results_clean$constructorId)))
 
 cat("\n══════════════════════════════════════════\n")
-cat("  ✅ F1 Analysis Complete! All plots saved.\n")
+cat("   F1 Analysis Complete! All plots saved.\n")
 cat("══════════════════════════════════════════\n")
 cat("Plots generated:\n")
 cat("  1. plot1_driver_points.png\n")
